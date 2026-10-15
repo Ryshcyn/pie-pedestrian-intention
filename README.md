@@ -5,40 +5,80 @@
 ## 项目流程
 
 ```mermaid
-flowchart TB
-    A[PIE 原始标注] --> A1[空间与行为标注]
-    A --> A2[行人属性与意图概率]
-    A --> A3[自车 OBD 数据]
+flowchart LR
+    subgraph DATA["① 数据输入与预处理"]
+        direction TB
+        A1["空间与行为 XML<br/>bbox · action · look"]
+        A2["行人属性 XML<br/>intention · intersection · signal"]
+        A3["自车 XML<br/>OBD speed"]
+        B1["按帧对齐多源标注"]
+        B2["按视频划分<br/>70% Train · 15% Val · 15% Test"]
+        B3["15 帧观察窗口<br/>stride = 15 · full observation"]
+        A1 --> B1
+        A2 --> B1
+        A3 --> B1
+        B1 --> B2 --> B3
+    end
 
-    A1 --> B[数据预处理]
-    A2 --> B
-    A3 --> B
-    B --> B1[按视频划分 Train / Val / Test]
-    B1 --> B2[生成 15 帧观察窗口]
+    subgraph GRAPH["② 单帧多行人空间图"]
+        direction TB
+        P["Pedestrian<br/>[cx, cy, w, h, vx, vy]<br/>+ optional is_looking"]
+        V["Vehicle<br/>[cx, cy, w, h, is_car]"]
+        C["Crosswalk<br/>geometry + traffic-light state"]
+        E["Ego vehicle<br/>normalized OBD speed"]
+        G["Graph construction<br/>Ped KNN k=5 · Vehicle→Ped<br/>Crosswalk→Ped · Self-loop"]
+        P --> G
+        V --> G
+        C --> G
+        E -. global context .-> G
+    end
 
-    B2 --> C{行人特征配置}
-    C -->|Baseline| C1[位置、尺寸与速度 6 维]
-    C -->|+ look| C2[基础特征 + is_looking 7 维]
+    subgraph SPATIAL["③ 空间关系编码"]
+        direction TB
+        S1["类型专属线性投影<br/>统一至 128 维"]
+        S2["EgoFiLM<br/>自车速度调制节点表示"]
+        S3["2 × GATv2<br/>4 heads · residual · LayerNorm"]
+        S4["每帧行人表示<br/>P × 128"]
+        S1 --> S2 --> S3 --> S4
+    end
 
-    C1 --> D[逐帧构建多行人空间图]
-    C2 --> D
-    D --> D1[行人 KNN 边]
-    D --> D2[车辆 → 行人]
-    D --> D3[人行横道 → 行人]
-    D1 --> E[两层 GATv2 + EgoFiLM]
-    D2 --> E
-    D3 --> E
+    subgraph TEMPORAL["④ 时间建模：二选一"]
+        direction TB
+        T0{"Temporal encoder"}
+        T1["2 × Causal Temporal GAT<br/>历史帧 → 当前帧"]
+        T2["2-layer Unidirectional GRU<br/>按时间顺序编码"]
+        T3["15 帧行人时序表示<br/>取最后时间步"]
+        T0 --> T1 --> T3
+        T0 --> T2 --> T3
+    end
 
-    E --> F{时间编码器}
-    F --> F1[因果 Temporal GAT]
-    F --> F2[单向 GRU]
-    F1 --> G[行人时序表示]
-    F2 --> G
+    subgraph OUTPUT["⑤ 双任务预测与消融评估"]
+        direction TB
+        O1["Intention head<br/>时序表示 + 静态场景上下文"]
+        O2["Action head<br/>时序表示"]
+        O3["BCEWithLogits<br/>class weight · label smoothing"]
+        O4["Accuracy · Precision<br/>Recall · F1"]
+        O5["2 × 2 Ablation<br/>Temporal GAT / GRU<br/>× Baseline / +look"]
+        O1 --> O3
+        O2 --> O3
+        O3 --> O4 --> O5
+    end
 
-    G --> H1[过街意图预测]
-    G --> H2[当前动作预测]
-    H1 --> I[2×2 消融实验与指标对比]
-    H2 --> I
+    B3 --> G
+    G --> S1
+    S4 --> T0
+    T3 --> O1
+    T3 --> O2
+    A2 -. static context .-> O1
+
+    classDef data fill:#E8F1FF,stroke:#4C78A8,color:#17324D,stroke-width:1.5px;
+    classDef graph fill:#EAF7EF,stroke:#3A8D5D,color:#173D28,stroke-width:1.5px;
+    classDef model fill:#F2ECFF,stroke:#7557B7,color:#32215B,stroke-width:1.5px;
+    classDef output fill:#FFF3E3,stroke:#D9822B,color:#5A3210,stroke-width:1.5px;
+    class A1,A2,A3,B1,B2,B3 data;
+    class P,V,C,E,G graph;
+    class S1,S2,S3,S4,T0,T1,T2,T3 model;
+    class O1,O2,O3,O4,O5 output;
 ```
 
 ## 结果摘要
