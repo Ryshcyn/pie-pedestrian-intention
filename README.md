@@ -4,45 +4,7 @@
 
 ## 项目流程
 
-```mermaid
-flowchart TB
-    A1["空间与行为标注<br/>bbox · action · look"]
-    A2["行人属性<br/>intention · intersection · signal"]
-    A3["自车状态<br/>OBD speed"]
-
-    A1 --> B
-    A2 --> B
-    A3 --> B
-    B["① 数据预处理<br/>多源标注按帧对齐<br/>视频级 70 / 15 / 15 划分"]
-    B --> C["② 序列样本生成<br/>15 帧观察窗口 · stride 15<br/>仅保留全程可见的目标行人"]
-
-    C --> D["③ 单帧多行人图构建<br/><br/>Ped: 位置 + 尺寸 + 速度 + optional look<br/>Vehicle: 几何信息 + is_car<br/>Crosswalk: 几何信息 + 信号灯状态<br/><br/>边: Ped KNN k=5 · Vehicle→Ped<br/>Crosswalk→Ped · Self-loop"]
-
-    D --> E["④ 空间编码器<br/>类型专属投影 → 128 维<br/>EgoFiLM 速度调制<br/>2 × GATv2 · 4 heads · residual · LayerNorm"]
-
-    E --> F{"⑤ 时间编码器"}
-    F -->|方案 A| F1["Causal Temporal GAT<br/>2 层 · 历史帧→当前帧"]
-    F -->|方案 B| F2["Unidirectional GRU<br/>2 层 · 顺序时序编码"]
-    F1 --> G["行人时序表示<br/>取第 15 帧输出"]
-    F2 --> G
-
-    G --> H1["Intention Head<br/>时序表示 + 静态场景上下文"]
-    G --> H2["Action Head<br/>时序表示"]
-    A2 -. intersection / signal / lanes .-> H1
-
-    H1 --> I["⑥ 联合训练与评估<br/>BCEWithLogits · class weight<br/>intention label smoothing = 0.05"]
-    H2 --> I
-    I --> J["2 × 2 消融实验<br/>Temporal GAT / GRU × Baseline / +look<br/>Accuracy · Precision · Recall · F1"]
-
-    classDef inputNode fill:#E8F1FF,stroke:#4C78A8,color:#17324D,stroke-width:1.5px;
-    classDef processNode fill:#EAF7EF,stroke:#3A8D5D,color:#173D28,stroke-width:1.5px;
-    classDef modelNode fill:#F2ECFF,stroke:#7557B7,color:#32215B,stroke-width:1.5px;
-    classDef outputNode fill:#FFF3E3,stroke:#D9822B,color:#5A3210,stroke-width:1.5px;
-    class A1,A2,A3 inputNode;
-    class B,C,D processNode;
-    class E,F,F1,F2,G modelNode;
-    class H1,H2,I,J outputNode;
-```
+![PIE 行人过街意图与动作预测项目流程](docs/project-architecture.png)
 
 ## 结果摘要
 
