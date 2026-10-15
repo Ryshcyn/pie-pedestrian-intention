@@ -5,9 +5,9 @@
 ## 项目流程
 
 ```mermaid
-flowchart LR
+flowchart TB
     subgraph DATA["① 数据输入与预处理"]
-        direction TB
+        direction LR
         A1["空间与行为 XML<br/>bbox · action · look"]
         A2["行人属性 XML<br/>intention · intersection · signal"]
         A3["自车 XML<br/>OBD speed"]
@@ -21,7 +21,7 @@ flowchart LR
     end
 
     subgraph GRAPH["② 单帧多行人空间图"]
-        direction TB
+        direction LR
         P["Pedestrian<br/>[cx, cy, w, h, vx, vy]<br/>+ optional is_looking"]
         V["Vehicle<br/>[cx, cy, w, h, is_car]"]
         C["Crosswalk<br/>geometry + traffic-light state"]
@@ -34,7 +34,7 @@ flowchart LR
     end
 
     subgraph SPATIAL["③ 空间关系编码"]
-        direction TB
+        direction LR
         S1["类型专属线性投影<br/>统一至 128 维"]
         S2["EgoFiLM<br/>自车速度调制节点表示"]
         S3["2 × GATv2<br/>4 heads · residual · LayerNorm"]
@@ -43,7 +43,7 @@ flowchart LR
     end
 
     subgraph TEMPORAL["④ 时间建模：二选一"]
-        direction TB
+        direction LR
         T0{"Temporal encoder"}
         T1["2 × Causal Temporal GAT<br/>历史帧 → 当前帧"]
         T2["2-layer Unidirectional GRU<br/>按时间顺序编码"]
