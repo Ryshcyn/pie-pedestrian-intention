@@ -71,14 +71,14 @@ flowchart LR
     T3 --> O2
     A2 -. static context .-> O1
 
-    classDef data fill:#E8F1FF,stroke:#4C78A8,color:#17324D,stroke-width:1.5px;
-    classDef graph fill:#EAF7EF,stroke:#3A8D5D,color:#173D28,stroke-width:1.5px;
-    classDef model fill:#F2ECFF,stroke:#7557B7,color:#32215B,stroke-width:1.5px;
-    classDef output fill:#FFF3E3,stroke:#D9822B,color:#5A3210,stroke-width:1.5px;
-    class A1,A2,A3,B1,B2,B3 data;
-    class P,V,C,E,G graph;
-    class S1,S2,S3,S4,T0,T1,T2,T3 model;
-    class O1,O2,O3,O4,O5 output;
+    classDef dataNode fill:#E8F1FF,stroke:#4C78A8,color:#17324D,stroke-width:1.5px;
+    classDef graphNode fill:#EAF7EF,stroke:#3A8D5D,color:#173D28,stroke-width:1.5px;
+    classDef modelNode fill:#F2ECFF,stroke:#7557B7,color:#32215B,stroke-width:1.5px;
+    classDef outputNode fill:#FFF3E3,stroke:#D9822B,color:#5A3210,stroke-width:1.5px;
+    class A1,A2,A3,B1,B2,B3 dataNode;
+    class P,V,C,E,G graphNode;
+    class S1,S2,S3,S4,T0,T1,T2,T3 modelNode;
+    class O1,O2,O3,O4,O5 outputNode;
 ```
 
 ## 结果摘要
