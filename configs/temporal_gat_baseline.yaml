@@ -1,0 +1,38 @@
+experiment:
+  temporal_encoder: temporal_gat
+  include_look: false
+data: &data
+  output_dir: data/processed
+  t_obs: 15
+  stride: 15
+  seed: 42
+  train_ratio: 0.70
+  val_ratio: 0.15
+  img_w: 1920
+  img_h: 1080
+graph: &graph
+  knn_k: 5
+  veh_dist: 0.15
+model: &model
+  hidden_dim: 128
+  n_spatial_layers: 2
+  n_spatial_heads: 4
+  n_temporal_layers: 2
+  n_temporal_heads: 4
+  n_gru_layers: 2
+  dropout: 0.2
+training:
+  data_dir: data/processed
+  checkpoint_dir: outputs/temporal_gat_baseline
+  epochs: 10
+  lr: 0.0005
+  weight_decay: 0.0003
+  accumulation_steps: 8
+  patience: 2
+  num_workers: 2
+  val_subsample: 0.3
+  early_stop_metric: int_f1
+  label_smoothing_int: 0.05
+  loss_weights:
+    intention: 1.0
+    action: 1.0

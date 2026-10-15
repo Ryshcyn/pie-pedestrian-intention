@@ -1,0 +1,9 @@
+temporal_encoder,look_feature,parameters,early_stop_epoch,task,accuracy,precision,recall,f1
+Temporal GAT,no,239106,4,intention,0.7437,0.9394,0.6867,0.7934
+Temporal GAT,yes,239234,4,intention,0.7822,0.9500,0.7349,0.8287
+GRU,no,369410,5,intention,0.7626,0.9428,0.7119,0.8112
+GRU,yes,369538,7,intention,0.7682,0.9345,0.7276,0.8182
+Temporal GAT,no,239106,4,action,0.6898,0.7298,0.7808,0.7545
+Temporal GAT,yes,239234,4,action,0.6677,0.6929,0.8183,0.7504
+GRU,no,369410,5,action,0.6677,0.7165,0.7538,0.7347
+GRU,yes,369538,7,action,0.6452,0.6759,0.8045,0.7346

@@ -1,0 +1,23 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.venv/
+.idea/
+.vscode/
+
+# PIE data and generated artifacts
+data/
+annotations/
+annotations_attributes/
+annotations_vehicle/
+*.pt
+*.pth
+*.ckpt
+outputs/
+checkpoints*/
+analysis/results/
+
+# Original course/export artifacts
+*.docx
+*.pdf
+*.zip
