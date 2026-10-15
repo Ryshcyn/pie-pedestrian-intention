@@ -6,6 +6,16 @@
 
 ![PIE 行人过街意图与动作预测项目流程](docs/project-architecture.png)
 
+## 模型架构详图
+
+### GATv2 + GRU
+
+![GATv2 与单向 GRU 模型架构](docs/gru-architecture-corrected.png)
+
+### GATv2 + Temporal GAT
+
+![GATv2 与因果 Temporal GAT 模型架构](docs/temporal-gat-architecture-corrected.png)
+
 ## 结果摘要
 
 | 模型 | look | 参数量 | 意图 F1 | 动作 F1 |
