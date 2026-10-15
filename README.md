@@ -122,10 +122,8 @@ python analysis/analyze_pie_dataset.py --help
 
 ## 说明
 
-- 原始 PIE 数据、预处理后的 `.pt` 文件和训练权重未上传。
-- 原始课程报告包含姓名与学号，仓库仅提供匿名化研究摘要。
-- 本仓库代码采用 MIT License；PIE 数据及相关资产仍受其原始许可约束，请同时遵守 [PIE 官方说明](https://data.nvision2.eecs.yorku.ca/PIE_dataset/)。
-- 此仓库仅整理最终报告中实际完成的功能。反事实解释属于未来工作，不作为现有实现声明。
+- PIE 数据与训练权重不随仓库分发，请按上述步骤自行准备。
+- 项目代码采用 MIT License；数据使用请遵守 [PIE 官方许可](https://data.nvision2.eecs.yorku.ca/PIE_dataset/)。
 
 ## 引用
 
