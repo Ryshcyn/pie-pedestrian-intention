@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="720" viewBox="0 0 1440 720" role="img">
+<title>Final report F1 results</title>
+<desc>Comparison of Temporal GAT and GRU with and without the look feature for crossing intention and current action prediction.</desc>
+<rect width="1440" height="720" fill="#FFFFFF"/>
+<g font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+<text x="80" y="82" fill="#172033" font-size="34" font-weight="750">Final Report Results</text>
+<text x="80" y="120" fill="#64748B" font-size="17">Effect of adding the per-frame look feature · higher F1 is better</text>
+<circle cx="1040" cy="89" r="8" fill="#94A3B8"/>
+<text x="1057" y="95" fill="#64748B" font-size="15">Without look</text>
+<circle cx="1200" cy="89" r="8" fill="#2563EB"/>
+<text x="1217" y="95" fill="#64748B" font-size="15">With look</text>
+<rect x="80" y="205" width="585" height="390" rx="22" fill="#F8FAFC"/>
+<text x="116" y="253" fill="#172033" font-size="23" font-weight="700">Crossing intention</text>
+<text x="116" y="283" fill="#64748B" font-size="14">F1 score</text>
+<line x1="245.0" y1="318" x2="245.0" y2="530" stroke="#E2E8F0" stroke-width="1"/>
+<text x="245.0" y="558" fill="#64748B" font-size="13" text-anchor="middle">0.78</text>
+<line x1="356.66666666666686" y1="318" x2="356.66666666666686" y2="530" stroke="#E2E8F0" stroke-width="1"/>
+<text x="356.66666666666686" y="558" fill="#64748B" font-size="13" text-anchor="middle">0.80</text>
+<line x1="468.33333333333314" y1="318" x2="468.33333333333314" y2="530" stroke="#E2E8F0" stroke-width="1"/>
+<text x="468.33333333333314" y="558" fill="#64748B" font-size="13" text-anchor="middle">0.82</text>
+<line x1="580.0" y1="318" x2="580.0" y2="530" stroke="#E2E8F0" stroke-width="1"/>
+<text x="580.0" y="558" fill="#64748B" font-size="13" text-anchor="middle">0.84</text>
+<text x="116" y="375" fill="#172033" font-size="16" font-weight="600">Temporal GAT</text>
+<line x1="319.81666666666655" y1="370" x2="516.9083333333334" y2="370" stroke="#E2E8F0" stroke-width="10" stroke-linecap="round"/>
+<circle cx="319.8" cy="370" r="10" fill="#94A3B8" stroke="#FFFFFF" stroke-width="3"/>
+<circle cx="516.9" cy="370" r="11" fill="#2563EB" stroke="#FFFFFF" stroke-width="3"/>
+<text x="319.81666666666655" y="402" fill="#64748B" font-size="13" text-anchor="middle">0.7934</text>
+<text x="516.9083333333334" y="350" fill="#2563EB" font-size="14" font-weight="700" text-anchor="middle">0.8287</text>
+<text x="628" y="375" fill="#0F766E" font-size="15" font-weight="700" text-anchor="middle">+0.0353</text>
+<text x="116" y="480" fill="#172033" font-size="16" font-weight="600">GRU</text>
+<line x1="419.20000000000016" y1="475" x2="458.28333333333364" y2="475" stroke="#E2E8F0" stroke-width="10" stroke-linecap="round"/>
+<circle cx="419.2" cy="475" r="10" fill="#94A3B8" stroke="#FFFFFF" stroke-width="3"/>
+<circle cx="458.3" cy="475" r="11" fill="#2563EB" stroke="#FFFFFF" stroke-width="3"/>
+<text x="419.20000000000016" y="507" fill="#64748B" font-size="13" text-anchor="middle">0.8112</text>
+<text x="458.28333333333364" y="455" fill="#2563EB" font-size="14" font-weight="700" text-anchor="middle">0.8182</text>
+<text x="628" y="480" fill="#0F766E" font-size="15" font-weight="700" text-anchor="middle">+0.0070</text>
+<rect x="775" y="205" width="585" height="390" rx="22" fill="#F8FAFC"/>
+<text x="811" y="253" fill="#172033" font-size="23" font-weight="700">Current action</text>
+<text x="811" y="283" fill="#64748B" font-size="14">F1 score</text>
+<line x1="940.0" y1="318" x2="940.0" y2="530" stroke="#E2E8F0" stroke-width="1"/>
+<text x="940.0" y="558" fill="#64748B" font-size="13" text-anchor="middle">0.72</text>
+<line x1="1051.6666666666667" y1="318" x2="1051.6666666666667" y2="530" stroke="#E2E8F0" stroke-width="1"/>
+<text x="1051.6666666666667" y="558" fill="#64748B" font-size="13" text-anchor="middle">0.73</text>
+<line x1="1163.3333333333333" y1="318" x2="1163.3333333333333" y2="530" stroke="#E2E8F0" stroke-width="1"/>
+<text x="1163.3333333333333" y="558" fill="#64748B" font-size="13" text-anchor="middle">0.75</text>
+<line x1="1275.0" y1="318" x2="1275.0" y2="530" stroke="#E2E8F0" stroke-width="1"/>
+<text x="1275.0" y="558" fill="#64748B" font-size="13" text-anchor="middle">0.77</text>
+<text x="811" y="375" fill="#172033" font-size="16" font-weight="600">Temporal GAT</text>
+<line x1="1196.833333333333" y1="370" x2="1166.3111111111107" y2="370" stroke="#E2E8F0" stroke-width="10" stroke-linecap="round"/>
+<circle cx="1196.8" cy="370" r="10" fill="#94A3B8" stroke="#FFFFFF" stroke-width="3"/>
+<circle cx="1166.3" cy="370" r="11" fill="#2563EB" stroke="#FFFFFF" stroke-width="3"/>
+<text x="1196.833333333333" y="402" fill="#64748B" font-size="13" text-anchor="middle">0.7545</text>
+<text x="1166.3111111111107" y="350" fill="#2563EB" font-size="14" font-weight="700" text-anchor="middle">0.7504</text>
+<text x="1323" y="375" fill="#C2410C" font-size="15" font-weight="700" text-anchor="middle">-0.0041</text>
+<text x="811" y="480" fill="#172033" font-size="16" font-weight="600">GRU</text>
+<line x1="1049.4333333333336" y1="475" x2="1048.6888888888893" y2="475" stroke="#E2E8F0" stroke-width="10" stroke-linecap="round"/>
+<circle cx="1049.4" cy="475" r="10" fill="#94A3B8" stroke="#FFFFFF" stroke-width="3"/>
+<circle cx="1048.7" cy="475" r="11" fill="#2563EB" stroke="#FFFFFF" stroke-width="3"/>
+<text x="1049.4333333333336" y="507" fill="#64748B" font-size="13" text-anchor="middle">0.7347</text>
+<text x="1048.6888888888893" y="455" fill="#2563EB" font-size="14" font-weight="700" text-anchor="middle">0.7346</text>
+<text x="1323" y="480" fill="#C2410C" font-size="15" font-weight="700" text-anchor="middle">-0.0001</text>
+<text x="80" y="656" fill="#64748B" font-size="14">Source: results/final_report_metrics.csv · Exact F1 labels and signed changes are shown.</text>
+</g>
+</svg>

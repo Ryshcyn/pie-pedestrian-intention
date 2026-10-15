@@ -27,7 +27,7 @@
 
 加入 `look` 后，Temporal GAT 的意图 F1 提升 0.0353，GRU 提升 0.0070；动作 F1 没有改善。详细设计、训练设置与讨论见 [研究摘要](docs/RESEARCH_REPORT.md)，完整指标见 [CSV](results/final_report_metrics.csv)。
 
-![PIE look 标签分布](docs/look-label-distribution.png)
+![最终报告 F1 结果对比](docs/final-results-summary.svg)
 
 ## 项目结构
 
@@ -38,7 +38,7 @@ src/graph_builder.py     多行人空间图构建
 src/dataset.py           15 帧序列数据集
 src/models/              GRU 与 Temporal GAT 模型
 src/train.py             统一训练入口
-analysis/                数据集统计脚本
+analysis/                数据统计与结果图生成脚本
 docs/                    匿名化研究说明与图表
 results/                 最终报告指标
 ```
